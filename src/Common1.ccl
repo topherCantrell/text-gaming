@@ -1,0 +1,410 @@
+
+Cluster Common1
+
+MakeStick:
+  STICK
+  RETURN
+
+; Move the whimsical errors to the MISC cluster!
+
+Handle:
+
+  ;PRINTVAR NumberOfWords
+  ;PRINTVAR word1
+
+  respAction = 0
+
+  if(NumberOfWords == 0) {
+    GOTO Common2:GeneralError
+	RETURN
+  }
+  
+  if(word1==65535) {
+    GOTO Common2:GeneralError
+	RETURN
+  }
+
+  ; Single words (generally movement commands)
+
+  if(word1 < 11) {
+    PRINT msgBadDirection
+    RETURN
+  }
+
+  ; PANEL
+  if(word1 == WD_PANEL) {
+    PRINT msgNothingHappens
+    RETURN
+  }
+
+  ; SWIM
+  ;if(word1==WD_SWIM) {
+  ;  PRINT msgDontKnowHow
+  ;  RETURN
+  ;}
+
+  ; BACK
+  if(word1 == WD_BACK) {
+    ; In the current architecture we can't back. We would have
+	; to make sure each room is a cluster and offset to translate
+	; room-number to cluster and go there. Could be done, but
+	; not right now.
+    PRINT msgBack
+  }	 
+
+  if(word1==WD_LAMP) {
+    if(word2==WD_ON) {
+	  word1 = WD_ON
+	  GOTO Handle
+	}
+	if(word2==WD_OFF) {
+	  word1 = WD_OFF
+	  GOTO Handle
+	}
+  }
+   
+  ; ON, LIGHT
+  if(word1 == WD_ON) {
+    if(loc_lamp == IN_PACK) {
+	  PRINT msgLampOn
+	  lampOn = 1
+	} else {
+	  PRINT msgNoLamp
+	}
+	GOTO GeneralOK
+  }
+
+  ; OFF
+  if(word1 == WD_OFF) {
+    if(loc_lamp == IN_PACK) {
+	  PRINT msgLampOff
+	  lampOn = 0
+	} else {
+	  PRINT msgNoLamp
+	}
+	GOTO GeneralOK
+  }
+
+  ; QUIT,STOP
+  if(word1 == WD_QUIT) {
+    GOTO Common2:Quit
+  }
+
+  ; SCORE
+  if(word1 == WD_SCORE) {
+    CALL Common2:PrintScore
+	RETURN
+  }
+
+  ; LOOK
+  if(word1 == WD_LOOK) {
+    respAction = 1
+	RETURN
+  }	
+
+  ; ----- Get/Take commands
+
+  ; Tiny plant
+  ;   PRINT "THE PLANT HAS EXCEPTIONALLY DEEP ROOTS AND CANNOT BE PULLED FREE."
+  ;   (Logic moved to room where plant lives)
+
+  ; Statue
+  ;   If holding scepter "AS YOU APPROACH THE STATUE, IT COMES TO LIFE AND FLIES ACROSS THE CHAMBER WHERE IT LANDS AND RETURNS TO STONE."
+  ;   If not holding box "YOU CAN LIFT THE STATUE, BUT YOU CANNOT CARRY IT."
+  ;   Otherwise ... goes-in-box-flag
+
+  ; Pillow, Vase
+  ;   Clear flag so vase is not on pillow
+
+  ; Water
+  ;   Handle filling bottle
+  ;   (Logic moved to room where stream is)  
+
+  if(word1 == WD_GET) {
+
+    CALL ObjectInfo
+	if(temp!=65535) {
+	  
+	  if([temp] == currentRoom) {
+
+        if(temp != 10) {		
+
+	      if(numberOfObjectsInPack==8) {
+		    PRINT msgTooMany
+            RETURN
+		  }
+
+		  if(temp == 3) {
+		    if(loc_scepter == IN_PACK) {
+		      PRINT msgBirdError1
+		      RETURN
+		    }
+		    if(loc_box != IN_PACK) {
+		      PRINT msgBirdError2
+		      RETURN
+		    }
+		    birdInBox = 1
+		  }
+
+		  if(temp == 4) {
+		    vaseOnPillow = 0
+		  }
+		  if(temp == 19) {
+		    vaseOnPillow = 0
+		  }
+
+		  [temp] = IN_PACK
+		  numberOfObjectsInPack = numberOfObjectsInPack + 1
+		  if(temp2 == 1) {
+		    numberOfTreasuresInPack = numberOfTreasuresInPack+1
+		  }
+		  GOTO GeneralOK
+		}
+	  }
+
+	}    
+	
+  }  
+  
+  ; ----- Drop/Release commands
+
+  ; Vase
+  ;    "THE VASE IS NOW RESTING, DELICATELY, ON A VELVET PILLOW."
+  ;    "THE VASE DROPS WITH A DELICATE CRASH."
+  ;    Vase goes away ... pottery comes in
+
+  if(word1==WD_DROP) {
+    CALL ObjectInfo
+    if(temp!=65535) {	  
+      if([temp] == IN_PACK) {
+	    
+		if(temp == 3) {
+		  birdInBox = 0
+		}
+		if(temp == 1) {
+		  if(birdInBox == 1) {
+		    loc_bird = currentRoom
+			numberOfObjectsInPack = numberOfObjectsInPack - 1
+		  }
+		}
+
+        if(temp == 19) {
+	      if(loc_pillow == currentRoom) {
+	        PRINT msgVase1
+			vaseOnPillow = 1
+			loc_vase = currentRoom
+	      } else {
+		    PRINT msgVase2
+			loc_vase = 0
+		  	loc_pottery = currentRoom			
+		  }
+		  numberOfObjectsInPack = numberOfObjectsInPack - 1
+		  numberOfTreasuresInPack = numberOfTreasuresInPack -1
+		  RETURN		
+	    }
+
+	    [temp] = currentRoom	  
+	    numberOfObjectsInPack = numberOfObjectsInPack - 1
+	    if(temp2 == 1) {
+	      numberOfTreasuresInPack = numberOfTreasuresInPack-1
+	    }
+	    GOTO GeneralOK
+	  }
+    }	
+  }
+
+  ; ----- Open
+
+  ; Sarcophagus
+
+  ;   Pearl rolls to room 64
+  ;   If in pack "I'D ADVISE YOU TO PUT DOWN THE SARCOPHAGUS BEFORE OPENING IT!!"
+  ;   If have key "A GLISTENING PEARL FALLS OUT OF THE SARCOPHAGUS AND ROLLS AWAY. THE SARCOPHAGUS SNAPS SHUT AGAIN."
+  ;   If you have no key "YOU DON'T HAVE ANYTHING STRONG ENOUGH TO OPEN THE SARCOPHAGUS."
+  ;   If pearl already out "THE SARCOPHAGUS CREAKS OPEN, REVEALING NOTHING INSIDE. IT PROMPTLY SNAPS SHUT AGAIN."
+
+
+  if(word1==WD_OPEN) {
+    if(word2==WD_SARCOPHAGUS) {
+	  if(loc_sarcophagus == IN_PACK) {
+	    PRINT msgOpenSarc1
+		RETURN
+	  }
+	  if(loc_sarcophagus == currentRoom) {
+	    if(loc_key != IN_PACK) {
+		  PRINT msgOpenSarc2
+		  RETURN
+		}
+		if(loc_pearl == 0) {
+		  loc_pearl = 64
+		  PRINT msgOpenSarc3
+		  RETURN
+		}
+		PRINT msgOpenSarc4
+		RETURN
+	  }
+	}
+  }
+
+    
+  ; ----- Wave
+  ;   "NOTHING HAPPENS."
+  if(word1==WD_WAVE) {
+    PRINT msgNothingHappens
+	RETURN
+  }
+
+  ; ----- Pour
+  ;  Water in bottle "YOUR BOTTLE IS EMPTY AND THE GROUND IS WET."
+  ;  Anything else "YOU CAN'T POUR THAT."
+  ;if(word1==WD_POUR) {
+  ;  if(word2==WD_WATER) {
+;	  word2 = WD_BOTTLE
+;	}
+ ;   if(word2==WD_BOTTLE) {	 
+;	  if(loc_bottle == IN_PACK) {
+;	    if(waterInBottle==1) {
+;	      PRINT msgWetGround
+;		  RETURN
+;	    }
+;	  }
+;	}
+;	PRINT msgCantPour	
+;	RETURN
+ ; }
+
+  ; ----- Attack
+  ;  Bird "THE BIRD STATUE IS NOW DEAD. ITS BODY DISAPPEARS."
+  ;  Sarcophagus "THE STONE IS VERY STRONG AND IS IMPERVIOUS TO ATTACK."
+  ;  Serpent "ATTACKING THE SERPENT BOTH DOESN'T WORK AND IS VERY DANGEROUS."
+  ;   (Moved to serprent room)
+  ;  Anything else "YOU CAN'T BE SERIOUS!"
+
+  if(word1==WD_ATTACK) {
+    ;if(word2==WD_BIRD) {
+	;  PRINT msgAttackBird
+	;  RETURN	  
+	;}
+	;if(word2==WD_SARCOPHAGUS) {
+	;  PRINT msgAttackSarc
+	;  RETURN
+	;}
+	PRINT msgAttackError
+	RETURN
+  }
+
+  ; ----- Break
+  ;  "IT IS BEYOND YOUR POWER TO DO THAT."
+
+  if(word1==WD_BREAK) {
+    PRINT msgBreakError
+	RETURN
+  }
+
+  ; Continue in Part 2
+  GOTO Common2:Handle
+
+ObjectInfo:
+  temp  = 65535
+  temp2 = 0
+  if(word2<128) {
+    RETURN
+  }
+  temp = word2 & 127
+  if(temp > 10) {
+    temp2 = 1
+  }
+  RETURN
+
+GeneralOK:
+  PRINT msgOK    
+  RETURN
+
+;  01234567890123456789012345678901234567890
+
+
+msgBreakError:
+# "IT IS BEYOND YOUR POWER TO DO THAT.",10,0
+
+;msgAttackBird:
+;# "THE BIRD STATUE IS NOW DEAD. ITS BODY",10
+;# "DISAPPEARS.",10,0
+;msgAttackSarc:
+;# "THE STONE IS VERY STRONG AND IS",10
+;# "IMPERVIOUS TO ATTACK."10,0
+msgAttackError:
+# "YOU CAN'T BE SERIOUS!",10,0
+
+
+
+;msgWetGround:
+;# "YOUR BOTTLE IS EMPTY AND THE GROUND IS",10
+;# "WET.",10,0
+
+;msgPourError:
+;# "YOU CAN'T POUR THAT.",10,0
+
+msgOpenSarc1:
+# "I'D ADVISE YOU TO PUT DOWN THE",10
+# "SARCOPHAGUS BEFORE OPENING IT!!",10,0
+msgOpenSarc3:
+# "A GLISTENING PEARL FALLS OUT OF THE",10
+# "SARCOPHAGUS AND ROLLS AWAY. THE",10
+# "SARCOPHAGUS SNAPS SHUT AGAIN.",10,0
+msgOpenSarc2:
+# "YOU DON'T HAVE ANYTHING STRONG ENOUGH TO",10
+# "OPEN THE SARCOPHAGUS.",10,0
+msgOpenSarc4:
+# "THE SARCOPHAGUS CREAKS OPEN, REVEALING",10
+# "NOTHING INSIDE. IT PROMPTLY SNAPS SHUT",10
+# "AGAIN.",10,0
+
+
+
+msgOK:
+# "OK",10,0
+
+msgVase1:
+# "THE VASE IS NOW RESTING, DELICATELY, ON A",10
+# "VELVET PILLOW.",10,0
+
+msgVase2:
+# "THE VASE DROPS WITH A DELICATE CRASH.",10,0
+
+msgBirdError2:
+# "YOU CAN LIFT THE STATUE, BUT YOU CANNOT",10
+# "CARRY IT.",10,0
+
+msgBirdError1:
+# "AS YOU APPROACH THE STATUE, IT COMES TO",10
+# "LIFE AND FLIES ACROSS THE CHAMBER WHERE",10
+# "IT LANDS AND RETURNS TO STONE.",10,0
+
+msgTooMany:
+# "YOU CAN'T CARRY ANYTHING MORE. YOU'LL",10
+# "HAVE TO DROP SOMETHING FIRST.",10,0
+
+;  01234567890123456789012345678901234567890
+
+msgBack:
+# "SORRY, BUT I NO LONGER SEEM TO REMEMBER",10
+# "HOW IT WAS YOU GOT HERE.",10,0
+
+msgBadDirection:
+# "THERE IS NO WAY FOR YOU TO GO THAT",10
+# "DIRECTION.",10,0
+
+msgNothingHappens:
+# "NOTHING HAPPENS.",10,0
+
+;msgDontKnowHow:
+;# "I DON'T KNOW HOW.",10,0
+
+msgLampOn:
+# "YOUR LAMP IS NOW ON.",10,0
+
+msgLampOff:
+# "YOUR LAMP IS NOW OFF.",10,0
+
+msgNoLamp:
+# "YOU HAVE NO SOURCE OF LIGHT.",10,0

@@ -1,0 +1,232 @@
+
+
+; PrintInventory (Prints listing of things in pack)
+; PrintDescriptions (Prints listing of things in room)
+
+; -----------------------------------------------------------------------------
+
+; Can't pick up the bird if you are holding the scepter. The the pack description
+; of the BOX is always "BOX" or "BIRD STATUE IN BOX". Picking the bird up while
+; holding the box puts the bird in the box. Dropping the bird takes it out of the
+; box. Dropping the box with the bird in it leaves the bird in the box.
+
+; If there is water in the bottle, you get a second description.
+
+; Dropping vase without pillow on the floor breaks it.
+
+; The lamp looks the same in the pack but differently depending on whether it is
+; lit or not.
+
+CLUSTER Objects
+
+MakeStick:
+  STICK
+  RETURN
+
+PrintInventory:  
+
+; Special BOTTLE
+;   If waterInBottle add a line
+
+  temp = 0
+PILoop:
+  if([temp] == IN_PACK) {
+    PRINT objectPackDescriptions[temp]
+	if(temp==8) {
+	  if(waterInBottle==1) {
+	    PRINT msgWaterInBottle
+	  }
+	}
+  }
+  temp = temp + 1
+  if(temp<22) {
+    GOTO PILoop
+  }
+  
+  return
+
+; -----------------------------------------------------------------------------
+
+PrintDescriptions:
+
+; Special LAMP
+;   Two descriptions depending if ON or OFF
+; Special BOTTLE/WATER
+;   Tag a line if water in the box
+; Special BIRD/BOX
+;   If birdInBox print another desc of bird
+; Special VASE
+;   If vaseOnPillow print another desc of vase
+; Special BATTERIES
+;   If batteriesDead print another desc of batteries
+
+  temp = 0
+PDLoop:
+  if([temp] == currentRoom) {
+    if(temp==0) {
+	  if(lampOn==1) {
+        PRINT pmsg_lamp
+		GOTO PDNext
+	  }
+	}
+	if(temp==3) {
+	  if(birdInBox==1) {
+	    PRINT pmsg_bird
+		GOTO PDNext
+	  }
+	}
+	if(temp==19) {	  
+	  if(vaseOnPillow==1) {
+	    PRINT pmsg_vase
+		GOTO PDNext
+	  }
+	}
+	if(temp==9) {
+	  if(batteriesDead==1) {
+	    PRINT pmsg_batteries
+		GOTO PDNext
+	  }
+	}
+	PRINT objectDescriptions[temp]
+	if(temp==8) {
+	  if(waterInBottle==1) {
+	    PRINT pmsg_bottle
+	  }
+	}
+  }
+PDNext:
+  temp = temp + 1
+  if(temp<22) {
+    GOTO PDLoop
+  }
+  
+  return
+
+; -----------------------------------------------------------------------------
+
+objectPackDescriptions:
+#   "BRASS LANTERN",10,0
+
+# "STATUE BOX",10,0
+
+# "SCEPTER",10,0
+
+# "BIRD STATUE IN BOX",10,0
+
+# "VELVET PILLOW",10,0
+
+# "SARCOPHAGUS >GROAN<",10,0
+
+# "'EGYPTIAN WEEKLY'",10,0
+
+# "TASTY FOOD",10,0
+
+# "SMALL BOTTLE",10,0
+
+# "BATTERIES",10,0
+
+# 10,0
+
+# "LARGE GOLD NUGGET",10,0
+
+# "SEVERAL DIAMONDS",10,0
+
+# "SILVER BARS",10,0
+
+# "PRECIOUS JEWELRY",10,0
+
+# "RARE COINS",10,0
+
+# "TREASURE CHEST",10,0
+
+# "GOLDEN EGGS",10,0
+
+# "JEWELED KEY",10,0
+
+# "VASE",10,0
+
+# "EGG-SIZED EMERALD",10,0
+
+# "GLISTENING PEARL",10,0
+
+msgWaterInBottle:
+# "WATER IN THE BOTTLE",10,0
+
+; ------------------------------------------------------------
+
+objectDescriptions:
+# "THERE IS A SHINY BRASS LAMP NEARBY.",10,0
+
+# "THERE IS A SMALL STATUE BOX DISCARDED",10
+# "NEARBY.",10,0
+
+# "A THREE FOOT SCEPTER WITH AN ANKH ON AN",10
+# "END LIES NEARBY.",10,0
+
+# "A STATUE OF THE BIRD GOD IS SITTING HERE.",10,0
+
+# "A SMALL VELVET PILLOW LIES ON THE FLOOR.",10,0
+
+# "THERE IS A SARCOPHAGUS HERE WITH IT'S",10
+# "COVER TIGHTLY CLOSED.",10,0
+
+# "THERE ARE A FEW RECENT ISSUES OF 'EGYPTIAN WEEKLY' MAGAZINE HERE.",10,0
+
+# "THERE IS FOOD HERE.",10,0
+
+# "THERE IS A BOTTLE HERE.",10,0
+
+# "THERE ARE FRESH BATTERIES HERE.",10,0
+
+# "THE FLOOR IS LITTERED WITH WORTHLESS",10
+# "SHARDS OF POTTERY.",10,0
+
+# "THERE IS A LARGE SPARKLING NUGGET OF",10
+# "GOLD HERE!",10,0
+
+# "THERE ARE DIAMONDS HERE!",10,0
+
+# "THERE ARE BARS OF SILVER HERE!",10,0
+
+# "THERE IS PRECIOUS JEWELRY HERE!",10,0
+
+# "THERE ARE MANY COINS HERE!",10,0
+
+# "THE PHARAOH'S TREASURE CHEST IS HERE!",10,0
+
+# "THERE IS A LARGE NEST HERE, FULL OF",10
+# "GOLDEN EGGS!",10,0
+
+# "THERE IS A JEWEL-ENCRUSTED KEY HERE!",10,0
+
+# "THERE IS A DELICATE, PRECIOUS, VASE HERE!",10,0
+
+# "THERE IS AN EMERALD HERE THE SIZE OF A",10
+# "PLOVER'S EGG!",10,0
+
+# "OFF TO ONE SIDE LIES A GLISTENING PEARL!",10,0
+
+; --------------------
+
+pmsg_lamp:
+# "THERE IS A LAMP SHINING NEARBY.",10,0
+
+pmsg_bird:
+# "THERE IS A BIRD STATUE IN THE BOX.",10,0
+
+pmsg_bottle:
+# "THERE IS WATER IN THE BOTTLE.",10,0
+
+pmsg_batteries:
+# "SOME WORN-OUT BATTERIES HAVE BEEN",10
+# "DISCARDED NEARBY.",10,0
+
+pmsg_vase:
+# "THE VASE IS NOW RESTING, DELICATELY, ON",10
+# "A VELVET PILLOW.",10,0
+
+
+
+
+
+

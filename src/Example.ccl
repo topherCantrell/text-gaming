@@ -1,0 +1,24 @@
+define MaxValue 10
+variable temp
+
+; ----------------------
+Cluster first
+  temp = 0
+ here:
+  CALL another:PrintIt
+  temp = temp + 1
+  if(temp < MaxValue) {
+    GOTO here
+  }
+ done:
+  GOTO done
+
+; ----------------------
+Cluster another
+ PrintIt:
+  PRINTVAR temp
+  PRINT msg
+  RETURN
+ msg:
+  # " Hello World!",10,0
+

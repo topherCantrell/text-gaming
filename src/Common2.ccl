@@ -1,0 +1,345 @@
+
+; PrintScore (adds up the score and prints it)
+; FallIntoPit (prints message, score, and stops)
+; Quit (prints score and stops)
+
+; -----------------------------------------------------------------------------
+
+CLUSTER Common2
+
+MakeStick:
+  STICK
+  RETURN
+
+PrintScore:  
+  score = 0
+  if(loc_gold==IN_PACK) {
+    score = score + 5
+  }
+  if(loc_diamonds==IN_PACK) {
+    score = score + 5
+  }
+  if(loc_silver==IN_PACK) {
+    score = score + 5
+  }
+  if(loc_jewelry==IN_PACK) {
+    score = score + 5
+  }
+  if(loc_coins==IN_PACK) {
+    score = score + 5
+  }
+  if(loc_chest==IN_PACK) {
+    score = score + 5
+  }
+  if(loc_eggs==IN_PACK) {
+    score = score + 5
+  }
+  if(loc_key==IN_PACK) {
+    score = score + 5
+  }
+  if(loc_vase==IN_PACK) {
+    score = score + 5     
+  }
+  if(loc_emerald==IN_PACK) {
+    score = score + 5
+  }
+  if(loc_pearl==IN_PACK) {
+    score = score + 5
+  }
+
+  if(loc_gold==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_diamonds==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_silver==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_jewelry==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_coins==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_chest==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_eggs==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_key==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_vase==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_emerald==TREASURE_ROOM) {
+    score = score + 20
+  }
+  if(loc_pearl==TREASURE_ROOM) {
+    score = score + 20
+  }
+
+  PRINT msgScore1
+  PRINTVAR score
+  PRINT msgScore2
+  PRINTVAR numberOfTurns
+  PRINT msgScore3
+
+  return
+
+; -----------------------------------------------------------------------------
+
+FallIntoPit:
+
+  PRINT msgPit
+
+; -----------------------------------------------------------------------------
+
+Quit:
+
+  CALL PrintScore
+
+Forever:
+  GOTO Forever
+
+; -----------------------------------------------------------------------------
+
+Handle:  
+
+  ; INVENT
+  if(word1 == WD_INVENTORY) {
+    if(numberOfObjectsInPack==0) {
+      PRINT msgInventNothing
+	  RETURN
+    }
+    PRINT msgInventHeader
+    CALL Objects:PrintInventory
+	RETURN
+  }
+
+  ; ----- Eat
+  ;  Food "THANK YOU, IT WAS DELICIOUS!"
+  ;  Statue, ?10? "I THINK I JUST LOST MY APPETITE."
+  ;  Anything else "DON'T BE RIDICULOUS!"
+
+  if(word1==WD_EAT) {
+    if(word2==WD_FOOD) {
+      if(loc_food == IN_PACK) {
+	    loc_food = 0
+	    numberOfObjectsInPack = numberOfObjectsInPack - 1
+        PRINT msgEatFood
+	    RETURN
+	  }
+	}
+	if(word2==WD_BIRD) {
+	  if(loc_bird == IN_PACK) {
+	    PRINT msgEatBird
+		RETURN
+	  }
+	}
+	PRINT msgFeedError
+	RETURN
+  }
+
+  ; ----- Drink
+  ;  Water in bottle "THE BOTTLE IS NOW EMPTY."
+  ;  Stream "YOU HAVE TAKEN A DRINK FROM THE STREAM. THE WATER TASTES STRONGLY OF MINERALS, BUT IS NOT UNPLEASANT. IT IS EXTREMELY COLD."
+  ;    (Moved to stream room)
+  ;  Anything else "YOU CAN'T BE SERIOUS!"
+
+  if(word1==WD_DRINK) {
+    if(word2==WD_WATER) {
+	  if(loc_bottle==IN_PACK) {
+	    if(waterInBottle==1) {
+		  PRINT msgDrinkWater
+		  waterInBottle = 0
+		  RETURN
+		}
+	  }
+	}
+	PRINT msgDrinkError
+	RETURN
+  }
+
+  ; ----- Feed
+  ;  Bird "IT'S NOT HUNGRY. BESIDES, YOU HAVE NO BIRD SEED."
+  ;  Serpent (holding bird) "THE SERPENT HAS NOW DEVOURED YOUR BIRD STATUE."
+  ;  Serpent (no bird) "THERE IS NOTHING HERE IT WANTS TO EAT - EXCEPT PERHAPS YOU."
+  ;    (Moved to serpent room)
+  ;  Sarcophagus "I'M GAME. WOULD YOU CARE TO EXPLAIN HOW?"
+  ;  ?13? "THERE IS NOTHING HERE IT WANTS TO EAT - EXCEPT PERHAPS YOU."
+  ;  Anything else "DON'T BE RIDICULOUS!"
+
+  if(word1 == WD_FEED) {
+    if(word2==WD_BIRD) {
+	  PRINT msgFeedBird
+	}
+	if(word2==WD_SARCOPHAGUS) {
+	  PRINT msgFeedSarc
+	}
+	PRINT msgFeedError
+	RETURN
+  }
+
+  ; ----- Fill
+  ;  Bottle "THERE IS NOTHING HERE WITH WHICH TO FILL THE BOTTLE."
+  ;  Vase "DON'T BE RIDICULOUS!"
+  ;  Anything else "YOU CAN'T FILL THAT."
+  if(word1==WD_FILL) {
+    if(word2==WD_BOTTLE) {
+	  PRINT msgFillError1
+	  RETURN
+	}
+	if(word2==WD_VASE) {
+	  PRINT msgFillError2
+	  RETURN
+	}
+	PRINT msgFillError3
+	RETURN
+  }
+
+  ; ----- Rub
+  ;  Lamp "RUBBING THE ELECTRIC LAMP IS NOT PARTICULARLY REWARDING. ANYWAY, NOTHING EXCITING HAPPENS."
+  ;  Anything else "PECULIAR. NOTHING UNEXPECTED HAPPENS."
+  if(word1==WD_RUB) {
+    if(word2==WD_LAMP) {
+	  PRINT msgRubLamp
+	  RETURN
+	}
+	PRINT msgRubError
+	RETURN
+  }
+
+  ; ----- Throw/Toss commands
+
+  ; Vase
+  ;    "YOU HAVE TAKEN THE VASE AND HURLED IT DELICATELY TO THE GROUND."
+
+  if(word1==WD_THROW) {
+    ;if(word2==WD_VASE) {
+	  ;PRINT msgVase3
+	  ;loc_vase = 0
+	  ;loc_pottery = currentRoom
+      ;numberOfObjectsInPack = numberOfObjectsInPack - 1
+      ;numberOfTreasuresInPack = numberOfTreasuresInPack -1
+      ;RETURN
+	;}
+	; Reprocess THROW as DROP
+	word1=WD_DROP
+	GOTO Common1:Handle
+  }
+
+  ;if(word1 <= 12) {
+  ;  PRINT msgUseCompass
+  ;  RETURN
+  ;}
+  ;if(word1 == WD_LEFT) {
+  ;  PRINT msgUseCompass2
+  ;  RETURN
+  ;}
+  ;if(word1 == WD_RIGHT) {
+  ;  PRINT msgUseCompass2
+  ;  RETURN
+  ;}
+
+GeneralError:
+
+  respAction = 255
+
+  if(whatNumber==0) {
+    PRINT msgWhat1
+  } 
+  if(whatNumber==1) {
+    PRINT msgWhat2
+  } 
+  if(whatNumber==2) {
+    PRINT msgWhat3
+  } 
+  if(whatNumber==3) {
+    PRINT msgWhat4
+  } 
+  whatNumber = whatNumber + 1
+  if(whatNumber == 4) {
+    whatNumber = 0
+  }
+  RETURN
+
+msgInventHeader:
+# "YOU ARE CURRENTLY HOLDING THE",10
+# "FOLLOWING:",10,0
+
+msgInventNothing:
+# "YOU'RE NOT CARRYING ANYTHING.",10,0
+
+;msgUseCompass:
+;# "I DON'T KNOW IN FROM OUT HERE. USE",10
+;# "COMPASS POINTS.",10,0
+
+;msgUseCompass2:
+;# "I AM UNSURE HOW YOU ARE FACING. USE",10
+;# "COMPASS POINTS.",10,0
+
+msgWhat1:
+# " WHAT?",10,0
+msgWhat2:
+# "I DON'T KNOW THAT WORD.",10,0
+msgWhat3:
+# "I DON'T UNDERSTAND.",10,0
+msgWhat4:
+# "I DON'T KNOW WHAT YOU MEAN.",10,0
+
+;msgVase3:
+;# "YOU HAVE TAKEN THE VASE AND HURLED IT",10
+;# "DELICATELY TO THE GROUND.",10,0
+
+
+msgRubLamp:
+# "RUBBING THE ELECTRIC LAMP IS NOT",10
+# "PARTICULARLY REWARDING. ANYWAY, NOTHING",10
+# "EXCITING HAPPENS.",10,0
+msgRubError:
+# "PECULIAR. NOTHING UNEXPECTED HAPPENS.",10,0
+
+msgFillError1:
+# "THERE IS NOTHING HERE WITH WHICH TO FILL",10
+# "THE BOTTLE."10,0
+msgFillError2:
+# "DON'T BE RIDICULOUS!",10,0
+msgFillError3:
+# "YOU CAN'T FILL THAT.",10,0
+
+msgFeedBird:
+# "IT'S NOT HUNGRY. BESIDES, YOU HAVE NO",10
+# "BIRD SEED.",10,0
+msgFeedSarc:
+# "I'M GAME. WOULD YOU CARE TO EXPLAIN HOW?",10,0
+msgFeedError:
+# "DON'T BE RIDICULOUS!",10,0
+
+
+msgDrinkWater:
+# "THE BOTTLE IS NOW EMPTY.",10,0
+msgDrinkError:
+# "YOU CAN'T BE SERIOUS!",10,0
+
+msgEatFood:
+# "THANK YOU, IT WAS DELICIOUS!",10,0
+msgEatBird:
+# "I THINK I JUST LOST MY APPETITE.",10,0
+
+
+
+msgScore1:
+# "YOU SCORED ",0
+msgScore2:
+# " OUT OF 220, ",10,"USING ",0
+msgScore3:
+# " TURNS.",10,0
+
+;  01234567890123456789012345678901234567890
+msgPit:
+# "YOU FELL INTO A PIT AND BROKE EVERY BONE",10
+# "IN YOUR BODY.",10,0
+

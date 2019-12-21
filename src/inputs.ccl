@@ -1,0 +1,207 @@
+; InitializeInputTokens (initializes the tokens)
+
+define WD_LAMP        0x80
+define WD_BOX         0x81
+define WD_SCEPTER     0x82
+define WD_BIRD        0x83
+define WD_PILLOW      0x84
+define WD_SARCOPHAGUS 0x85
+define WD_MAGAZINES   0x86
+define WD_FOOD        0x87
+define WD_BOTTLE      0x88
+define WD_BATTERIES   0x89
+define WD_POTTERY     0x8A
+define WD_GOLD        0x8B
+define WD_DIAMONDS    0x8C
+define WD_SILVER      0x8D
+define WD_JEWELRY     0x8E
+define WD_COINS       0x8F
+define WD_CHEST       0x90
+define WD_EGGS        0x91
+define WD_KEY         0x92
+define WD_VASE        0x93
+define WD_EMERALD     0x94
+define WD_PEARL       0x95
+
+define WD_SERPENT     0xb
+define WD_WATER       0x1c
+define WD_PLANT       0x7
+define WD_MACHINE     0x6
+
+define WD_NORTHEAST   0x5
+define WD_SOUTHEAST   0x6
+define WD_SOUTHWEST   0x7
+define WD_NORTHWEST   0x8
+define WD_NORTH       0x1
+define WD_EAST        0x2
+define WD_SOUTH       0x3
+define WD_WEST        0x4
+define WD_UP          0x9
+define WD_DOWN        0xa
+define WD_INSIDE      0xb
+define WD_OUTSIDE     0xc
+define WD_CROSS       0xd
+define WD_LEFT        0xe
+define WD_RIGHT       0xf
+define WD_JUMP        0x10
+define WD_CLIMB       0x11
+define WD_PANEL       0x12
+define WD_BACK        0x14
+define WD_SWIM        0x16
+define WD_ON          0x17
+define WD_OFF         0x18
+define WD_QUIT        0x19
+define WD_SCORE       0x1a
+define WD_INVENTORY   0x1b
+define WD_LOOK        0x1c
+define WD_DROP        0x21
+define WD_WAVE        0x23
+define WD_POUR        0x24
+define WD_RUB         0x25
+define WD_THROW       0x26
+define WD_FILL        0x27
+define WD_GET         0x28
+define WD_OPEN        0x29
+define WD_ATTACK      0x2c
+define WD_FEED        0x2d
+define WD_EAT         0x2e
+define WD_DRINK       0x2f
+define WD_BREAK       0x30
+define WD_LOAD        0x3a
+define WD_SAVE        0x3b
+define WD_PLUGH       0x39
+
+; -----------------------------------------------------------------------------
+
+Cluster InitializeInputTokens
+
+Init:
+
+  ; Point the Tokenizer COG at it's table of word-and-numbers
+  INPUTTOKENS tokens  
+
+  RETURN
+
+; -----------------------------------------------------------------------------
+
+tokens:
+; Packable objects ... upper bit set, lower 7 is loc_ variable
+; (33 words)
+# "LAMP"        ,0,WD_LAMP
+# "LANTERN"     ,0,WD_LAMP
+# "BOX"         ,0,WD_BOX
+# "SCEPTER"     ,0,WD_SCEPTER
+# "BIRD"        ,0,WD_BIRD
+# "STATUE"      ,0,WD_BIRD
+# "PILLOW"      ,0,WD_PILLOW
+# "VELVET"      ,0,WD_PILLOW
+# "SARCOPHAGUS" ,0,WD_SARCOPHAGUS
+# "MAGAZINES"   ,0,WD_MAGAZINES
+# "ISSUE"       ,0,WD_MAGAZINES
+# "EGYPTIAN"    ,0,WD_MAGAZINES
+# "FOOD"        ,0,WD_FOOD
+# "BOTTLE"      ,0,WD_BOTTLE
+# "BATTERIES"   ,0,WD_BATTERIES
+# "SHARDS"      ,0,WD_POTTERY
+# "POTTERY"     ,0,WD_POTTERY
+# "GOLD"        ,0,WD_GOLD
+# "NUGGET"      ,0,WD_GOLD
+# "DIAMONDS"    ,0,WD_DIAMONDS
+# "SILVER"      ,0,WD_SILVER
+# "BARS"        ,0,WD_SILVER
+# "JEWELRY"     ,0,WD_JEWELRY
+# "COINS"       ,0,WD_COINS
+# "CHEST"       ,0,WD_CHEST
+# "TREASURE"    ,0,WD_CHEST
+# "EGGS"        ,0,WD_EGGS
+# "EGG"         ,0,WD_EGGS
+# "NEST"        ,0,WD_EGGS
+# "KEY"         ,0,WD_KEY
+# "VASE"        ,0,WD_VASE
+# "EMERALD"     ,0,WD_EMERALD
+# "PEARL"       ,0,WD_PEARL
+
+; Permanent objects (6 words)
+# "SERPENT"    ,0,WD_SERPENT
+# "WATER"      ,0,WD_WATER
+# "PLANT"      ,0,WD_PLANT
+# "BEANSTALK"  ,0,WD_PLANT
+# "MACHINE"    ,0,WD_MACHINE
+# "VENDING"    ,0,WD_MACHINE
+
+; Directions (32 words)
+# "N"          ,0,WD_NORTH
+# "NORTH"      ,0,WD_NORTH
+# "E"          ,0,WD_EAST
+# "EAST"       ,0,WD_EAST
+# "S"          ,0,WD_SOUTH
+# "SOUTH"      ,0,WD_SOUTH
+# "W"          ,0,WD_WEST
+# "WEST"       ,0,WD_WEST
+# "NE"         ,0,WD_NORTHEAST
+# "NORTHEAST"  ,0,WD_NORTHEAST
+# "SE"         ,0,WD_SOUTHEAST
+# "SOUTHEAST"  ,0,WD_SOUTHEAST
+# "SW"         ,0,WD_SOUTHWEST
+# "SOUTHWEST"  ,0,WD_SOUTHWEST
+# "NW"         ,0,WD_NORTHWEST
+# "NORTHWEST"  ,0,WD_NORTHWEST
+# "U"          ,0,WD_UP
+# "UP"         ,0,WD_UP
+# "D"          ,0,WD_DOWN
+# "DOWN"       ,0,WD_DOWN
+# "IN"         ,0,WD_INSIDE
+# "INSIDE"     ,0,WD_INSIDE
+# "OUT"        ,0,WD_OUTSIDE
+# "OUTSIDE"    ,0,WD_OUTSIDE
+# "CROSS"      ,0,WD_CROSS
+# "LEFT"       ,0,WD_LEFT
+# "RIGHT"      ,0,WD_RIGHT
+# "JUMP"       ,0,WD_JUMP
+# "CLIMB"      ,0,WD_CLIMB
+# "PANEL"      ,0,WD_PANEL
+# "BACK"       ,0,WD_BACK
+# "SWIM"       ,0,WD_SWIM
+
+; Misc (39 words)
+# "ON"         ,0,WD_ON
+# "OFF"        ,0,WD_OFF
+# "QUIT"       ,0,WD_QUIT
+# "STOP"       ,0,WD_QUIT
+# "SCORE"      ,0,WD_SCORE
+# "INVENTORY"  ,0,WD_INVENTORY
+# "LOOK"       ,0,WD_LOOK
+# "DROP"       ,0,WD_DROP
+# "RELEASE"    ,0,WD_DROP
+# "FREE"       ,0,WD_DROP
+# "DISCARD"    ,0,WD_DROP
+# "LIGHT"      ,0,WD_ON
+# "WAVE"       ,0,WD_WAVE
+# "SHAKE"      ,0,WD_WAVE
+# "SWING"      ,0,WD_WAVE
+# "POUR"       ,0,WD_POUR
+# "RUB"        ,0,WD_RUB
+# "THROW"      ,0,WD_THROW
+# "TOSS"       ,0,WD_THROW
+# "FILL"       ,0,WD_FILL
+# "TAKE"       ,0,WD_GET
+# "GET"        ,0,WD_GET
+# "CARRY"      ,0,WD_GET
+# "CATCH"      ,0,WD_GET
+# "STEAL"      ,0,WD_GET
+# "CAPTURE"    ,0,WD_GET
+# "OPEN"       ,0,WD_OPEN
+# "ATTACK"     ,0,WD_ATTACK
+# "KILL"       ,0,WD_ATTACK
+# "HIT"        ,0,WD_ATTACK
+# "FIGHT"      ,0,WD_ATTACK
+# "FEED"       ,0,WD_FEED
+# "EAT"        ,0,WD_EAT
+# "DRINK"      ,0,WD_DRINK
+# "BREAK"      ,0,WD_BREAK
+# "SMASH"      ,0,WD_BREAK
+# "LOAD"       ,0,WD_LOAD
+# "SAVE"       ,0,WD_SAVE
+# "PLUGH"      ,0,WD_PLUGH
+# 0
+

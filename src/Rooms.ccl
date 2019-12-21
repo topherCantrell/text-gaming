@@ -1,0 +1,3317 @@
+
+CLUSTER Room1
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+include RoomEnter.frag
+
+    currentRoom = 1
+    ambientLight = 1
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room2:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room3:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room4:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room5:Enter
+    }
+    if(word1==WD_INSIDE) {
+      GOTO Room2:Enter
+    }
+
+include RoomEnd.frag
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE STANDING BEFORE THE ENTRANCE OF A",10
+# "PYRAMID. AROUND YOU IS A DESERT.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room2
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+include RoomEnter.frag
+
+    currentRoom = 2
+    ambientLight = 1
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_SOUTH) {
+      GOTO Room1:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room7:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room1:Enter
+    }
+    if(word1==WD_PANEL) {
+      GOTO Room26:Enter
+    }
+
+include RoomEnd.frag
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE ENTRANCE TO THE PYRAMID. A",10
+# "HOLE IN THE FLOOR LEADS TO A PASSAGE",10
+# "BENEATH THE SURFACE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room3
+
+include RoomEnter.frag
+
+    currentRoom = 3
+    ambientLight = 1
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room6:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room3:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room4:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room1:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE DESERT.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room4
+
+include RoomEnter.frag
+
+    currentRoom = 4
+    ambientLight = 1
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room1:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room3:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room4:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room5:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE DESERT.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room5
+
+include RoomEnter.frag
+
+    currentRoom = 5
+    ambientLight = 1
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room6:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room1:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room4:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room5:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE DESERT.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room6
+
+include RoomEnter.frag
+
+    currentRoom = 6
+    ambientLight = 1
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room6:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room3:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room1:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room5:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE DESERT.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room7
+
+include RoomEnter.frag
+
+    currentRoom = 7
+    ambientLight = 1
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room2:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room2:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room8:Enter
+    }
+    if(word1==WD_INSIDE) {
+      GOTO Room8:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A SMALL CHAMBER BENEATH A HOLE",10
+# "FROM THE SURFACE. A LOW CRAWL LEADS",10
+# "INWARD TO THE WEST.  HIEROGLYPHICS ON THE",10
+# "WALL TRANSLATE, 'CURSE ALL WHO ENTER THIS",10
+# "SACRED CRYPT.'",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room8
+
+include RoomEnter.frag
+
+    currentRoom = 8
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room7:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room7:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room9:Enter
+    }
+    if(word1==WD_INSIDE) {
+      GOTO Room9:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE CRAWLING OVER PEBBLES IN A LOW",10
+# "PASSAGE. THERE IS A DIM LIGHT AT THE EAST",10
+# "END OF THE PASSAGE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room9
+
+include RoomEnter.frag
+
+    currentRoom = 9
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room8:Enter
+    }
+    if(word1==WD_INSIDE) {
+      GOTO Room10:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room10:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room10:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A ROOM FILLED WITH BROKEN",10
+# "POTTERY SHARDS OF ANCIENT EGYPTIAN",10
+# "CRAFTS. AN AWKWARD CORRIDOR LEADS UPWARD",10
+# "AND WEST.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room10
+
+include RoomEnter.frag
+
+    currentRoom = 10
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_DOWN) {
+      GOTO Room9:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room9:Enter
+    }
+    if(word1==WD_INSIDE) {
+      GOTO Room11:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room11:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room11:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN AN AWKWARD SLOPING EAST/WEST",10
+# "CORRIDOR.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room11
+
+include RoomEnter.frag
+
+    currentRoom = 11
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room10:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room12:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A SPLENDID CHAMBER THIRTY FEET",10
+# "HIGH. THE WALLS ARE FROZEN RIVERS OF",10
+# "ORANGE STONE. AN AWKWARD CORRIDOR AND A",10
+# "GOOD PASSAGE EXIT FROM THE EAST AND WEST",10
+# "SIDES OF THE CHAMBER.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room12
+
+include RoomEnter.frag
+
+    currentRoom = 12
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room11:Enter
+    }
+    if(word1==WD_DOWN) {      
+	  ; SPECIAL-LOGIC
+	  ; Die if nugget is in pack
+	  if(loc_gold == IN_PACK) {
+	    PRINT msgNeck
+		GOTO Common2:Quit
+	  }
+	  GOTO Room13:Enter
+    }
+    if(word1==WD_WEST) {
+      ; SPECIAL-LOGIC
+	  ; Print crack-is-too-small and back to input
+	  PRINT msgCrack
+	  GOTO InputAgain
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "AT YOUR FEET IS A SMALL PIT BREATHING",10
+# "TRACES OF WHITE MIST. AN EAST PASSAGE",10
+# "ENDS HERE EXCEPT FOR A SMALL CRACK",10
+# "LEADING ON. ROUGH STONE STEPS LEAD DOWN",10
+# "THE PIT.",10,0
+
+msgNeck:
+# "YOU ARE AT THE BOTTOM OF THE PIT WITH A",10
+# "BROKEN NECK.",10,0
+
+msgCrack:
+# "THE CRACK IS FAR TOO SMALL FOR YOU TO",10
+# "FOLLOW.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room13
+
+include RoomEnter.frag
+
+    currentRoom = 13
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_SOUTH) {
+      GOTO Room14:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room15:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room16:Enter
+    }
+    if(word1==WD_NORTH) {
+      GOTO Room16:Enter
+    }
+    if(word1==WD_UP) {
+      ; SPECIAL-LOGIC
+	  ; If gold is in pack print unclimbable
+	  if(loc_gold == IN_PACK) {
+	    PRINT msgUnclimb
+		GOTO InputAgain
+	  }	  
+	  GOTO Room12:Enter
+    }
+    if(word1==WD_EAST) {
+      ; SPECIAL-LOGIC
+	  ; If gold is in pack print unclimbable
+	  if(loc_gold == IN_PACK) {
+	    PRINT msgUnclimb
+		GOTO InputAgain
+	  }	  
+	  GOTO Room12:Enter
+    }
+    if(word1==32) {
+      GOTO Room26:Enter
+    }
+
+    ; TOPHER
+	; In this room an UNKNOWN COMMAND takes you to room 26
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT ONE END OF A VAST HALL",10
+# "STRETCHING FORWARD OUT OF SIGHT TO THE",10
+# "WEST. THERE ARE OPENINGS TO EITHER SIDE.",10
+# "NEARBY, A WIDE STONE STAIRCASE LEADS",10
+# "DOWNWARD. THE HALL IS VERY MUSTY AND A",10
+# "COLD WIND BLOWS UP THE STAIRCASE. THERE",10
+# "IS A PASSAGE AT THE TOP OF A DOME BEHIND",10
+# "YOU. ROUGH STONE STEPS LEAD UP THE DOME.",10,0
+
+msgUnclimb:
+# "THE DOME IS UNCLIMBABLE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room14
+
+include RoomEnter.frag
+
+    currentRoom = 14
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_OUTSIDE) {
+      GOTO Room13:Enter
+    }
+    if(word1==WD_NORTH) {
+      GOTO Room13:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "THIS IS A LOW ROOM WITH A HIEROGLYPH ON",10
+# "THE WALL. IT TRANSLATES 'YOU WON'T GET IT",10
+# "UP THE STEPS'.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room15
+
+include RoomEnter.frag
+
+    currentRoom = 15
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room13:Enter
+    }
+    if(word1==WD_JUMP) {
+      ; SPECIAL-LOGIC
+	  ; If bridge is out print "take bridge"
+	  ; else print "you didn't make it" and stop
+	  if(bridgeExtended == 1) {
+	    PRINT msgTakeBridge
+		GOTO InputAgain
+	  }
+	  PRINT msgDidntMakeIt
+	  GOTO Common2:Quit	  
+    }
+    if(word1==WD_WEST) {
+      ; SPECIAL-LOGIC
+	  ; If bridge is here go to room 18
+	  ; else print "no way across"
+	  if(bridgeExtended == 1) {
+	    GOTO Room18:Enter
+	  }
+	  PRINT msgNoWay
+	  GOTO InputAgain
+    }
+    if(word1==WD_CROSS) {
+      ; SPECIAL-LOGIC
+	  ; If bridge is here go to room 18
+	  if(bridgeExtended == 1) {
+	    GOTO Room18:Enter
+	  }
+    }
+    if(word1==WD_WAVE) {
+      ; SPECIAL-LOGIC
+	  ; toggle bridge and print message
+	  if(bridgeExtended == 1) {
+	    bridgeExtended = 0
+		PRINT msgBridge1
+	  } else {
+	    PRINT msgBridge2
+	    bridgeExtended = 1
+	  }
+	  GOTO InputAgain
+    }
+
+include RoomEnd.frag
+
+;  01234567890123456789012345678901234567890
+msgNoWay:
+# "THERE IS NO WAY ACROSS THE BOTTOMLESS",10
+# "PIT.",10,0
+msgTakeBridge:
+# "I RESPECTFULLY SUGGEST YOU GO ACROSS",10
+# "THE BRIDGE INSTEAD OF JUMPING.",10,0
+msgDidntMakeIt:
+# "YOU DIDN'T MAKE IT.",10,0
+msgBridge2:
+# "A STONE BRIDGE NOW SPANS THE BOTTOMLESS",10
+# "PIT.",10,0
+msgBridge1:
+# "THE STONE BRIDGE HAS RETRACTED!",10,0
+
+PrintDesc:
+    PRINT desc
+	if(bridgeExtended==1) {
+	  PRINT msgBridge2
+	}
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+# "YOU ARE ON THE EAST BANK OF A BOTTOMLESS",10
+# "PIT STRETCHING ACROSS THE HALL. THE MIST",10
+# "IS QUITE THICK HERE, AND THE PIT IS TOO",10
+# "WIDE TO JUMP.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room16
+
+include RoomEnter.frag
+
+    currentRoom = 16
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room13:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room13:Enter
+    }
+    if(word1==WD_SOUTH) {
+      ; SPECIAL-LOGIC
+	  ; If serpent print bars way
+	  ; else Room 17
+	  if(serpentGone == 0) {
+	    PRINT serpBlock
+		GOTO InputAgain
+	  }
+	  GOTO Room17:Enter	  
+    }
+    if(word1==WD_NORTH) {
+      ; SPECIAL-LOGIC
+	  ; If serpent print bars way
+	  ; else Room 25
+	  if(serpentGone == 0) {
+	    PRINT serpBlock
+		GOTO InputAgain
+	  }
+	  GOTO Room25:Enter	
+    }
+    if(word1==WD_WEST) {
+      ; SPECIAL-LOGIC
+	  ; If serpent print bars way
+	  ; else Room 24
+	  if(serpentGone == 0) {
+	    PRINT serpBlock
+		GOTO InputAgain
+	  }
+	  GOTO Room24:Enter	
+    }
+    if(word1==WD_THROW) {	  
+      ; SPECIAL-LOGIC
+	  ; If serpent
+	  ;   make sure we have statue
+	  ;     statue out of box
+	  ;     statue to ground
+	  ;     -- numberOfObjects
+	  ;     serpent gone
+	  ;     print message
+	  if(serpentGone == 0) {
+	    if(loc_bird == IN_PACK) {
+		  birdInBox = 0
+		  loc_bird = currentRoom
+		  numberOfObjectsInPack = numberOfObjectsInPack - 1
+		  serpentGone = 1
+		  PRINT serpDrivenOff
+		  GOTO InputAgain
+		}
+	  }
+    }
+
+	if(serpentGone==0) {
+	  if(word2==WD_INSIDE) {
+	    if(word1==WD_ATTACK) {      	    	    
+  	      PRINT msgAttackSerpent
+		  GOTO InputAgain
+		}	  	      
+	    if(word1==WD_EAT) {	    
+		  PRINT msgEatSerpent
+		  GOTO InputAgain	    
+	    }
+		if(word1==WD_FEED) {
+		  if(loc_bird == IN_PACK) {
+		    PRINT msgFeedBird
+			loc_bird = 0
+			numberOfObjectsInPack = numberOfObjectsInPack -1
+			birdInBox = 0
+			GOTO InputAgain
+		  }		
+		  PRINT msgFeedNothing
+		  GOTO InputAgain  
+		}
+	  }	  
+	}
+
+include RoomEnd.frag
+
+
+
+PrintDesc:
+    PRINT desc
+	if(serpentGone == 0) {
+	  PRINT serpDesc
+	}
+	CALL Objects:PrintDescriptions
+    RETURN
+
+;  01234567890123456789012345678901234567890
+
+msgFeedBird:
+# "THE SERPENT HAS NOW DEVOURED YOUR BIRD",10
+# "STATUE.",10,0
+msgFeedNothing:
+# "THERE IS NOTHING HERE IT WANTS TO EAT -",10
+# "EXCEPT PERHAPS YOU.",10,0
+
+msgEatSerpent:
+# "I THINK I JUST LOST MY APPETITE.",10,0
+msgAttackSerpent:
+# "ATTACKING THE SERPENT BOTH DOESN'T WORK",10
+# "AND IS VERY DANGEROUS."10,0
+serpDrivenOff:
+# "THE BIRD STATUE COMES TO LIFE AND",10
+# "ATTACKS THE SERPENT AND IN AN ASTOUNDING",10
+# "FLURRY, DRIVES THE SERPENT AWAY. THE",10
+# "BIRD TURNS BACK INTO A STATUE.",10,0
+serpBlock:
+# "YOU CAN'T GET BY THE SERPENT.",10,0
+serpDesc:
+# "A HUGE GREEN FIERCE SERPENT BARS THE",10
+# "WAY!",10,0
+
+desc:
+# "YOU ARE IN THE PHARAOH'S CHAMBER, WITH",10
+# "PASSAGES OFF IN ALL DIRECTIONS.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room17
+
+include RoomEnter.frag
+
+    currentRoom = 17
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room16:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room16:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE SOUTH SIDE CHAMBER.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room18
+
+include RoomEnter.frag
+
+    currentRoom = 18
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_JUMP) {
+      ; SPECIAL-LOGIC
+	  ; If bridge print "take bridge"
+	  ; else didn't make it and stop
+	  if(bridgeExtended == 1) {
+	    PRINT msgTakeBridge
+		GOTO InputAgain
+	  }
+	  PRINT msgDidntMakeIt
+	  GOTO Common2:Quit
+    }
+    if(word1==WD_EAST) {
+      ; SPECIAL-LOGIC
+	  ; If stone bridge goto 15
+	  ; print no way across pit
+	  if(bridgeExtended == 1) {
+	    GOTO Room15:Enter
+	  }
+	  PRINT msgNoWay
+	  GOTO InputAgain
+    }
+    if(word1==WD_NORTH) {
+      ; SPECIAL-LOGIC
+	  ; print crawled around and goto 19
+	  PRINT msgCrawled
+	  GOTO Room19:Enter
+    }
+    if(word1==WD_CROSS) {
+      ; SPECIAL-LOGIC
+	  ; if stone bridge goto 15
+	  if(bridgeExtended == 1) {
+	    GOTO Room18:Enter
+	  }
+    }
+    if(word1==WD_WAVE) {
+      ; SPECIAL-LOGIC
+	  ; extend/retract bridge
+	  if(bridgeExtended == 1) {
+	    bridgeExtended = 0
+		PRINT msgBridge1
+	  } else {
+	    PRINT msgBridge2
+	    bridgeExtended = 1
+	  }
+	  GOTO InputAgain
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	if(bridgeExtended==1) {
+	  PRINT msgBridge2
+	}
+	CALL Objects:PrintDescriptions
+    RETURN
+
+msgNoWay:
+# "THERE IS NO WAY ACROSS THE BOTTOMLESS",10
+# "PIT.",10,0
+msgTakeBridge:
+# "I RESPECTFULLY SUGGEST YOU GO ACROSS",10
+# "THE BRIDGE INSTEAD OF JUMPING.",10,0
+msgDidntMakeIt:
+# "YOU DIDN'T MAKE IT.",10,0
+msgBridge2:
+# "A STONE BRIDGE NOW SPANS THE BOTTOMLESS",10
+# "PIT.",10,0
+msgBridge1:
+# "THE STONE BRIDGE HAS RETRACTED!",10,0
+msgCrawled:
+# "YOU HAVE CRAWLED THROUGH A VERY LOW WIDE",10
+# "PASSAGE PARALLEL TO AND NORTH OF THE",10
+# "HALL OF GODS.",10,0
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE ON THE WEST SIDE OF THE",10
+# "BOTTOMLESS PIT IN THE HALL OF GODS.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room19
+
+include RoomEnter.frag
+
+    currentRoom = 19
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_SOUTH) {
+      GOTO Room28:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room28:Enter
+    }
+    if(word1==WD_CLIMB) {
+      GOTO Room28:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room18:Enter
+    }
+    if(word1==WD_NORTH) {
+      GOTO Room18:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room20:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT THE WEST END OF THE HALL OF",10
+# "GODS. A LOW WIDE PASS CONTINUES WEST AND",10
+# "ANOTHER GOES NORTH. TO THE SOUTH IS A",10
+# "LITTLE PASSAGE SIX FEET OFF THE FLOOR.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room20
+
+include RoomEnter.frag
+
+    currentRoom = 20
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room19:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room19:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room21:Enter
+    }
+    if(word1==WD_NORTH) {
+      GOTO Room22:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room22:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT EAST END OF A VERY LONG HALL",10
+# "APPARENTLY WITHOUT SIDE CHAMBERS. TO THE",10
+# "EAST A LOW WIDE CRAWL SLANTS UP. TO THE",10
+# "NORTH A ROUND TWO FOOT HOLE SLANTS DOWN.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room21
+
+include RoomEnter.frag
+
+    currentRoom = 21
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room20:Enter
+    }
+    if(word1==WD_NORTH) {
+      GOTO Room22:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT THE WEST END OF A VERY LONG",10
+# "FEATURELESS HALL. THE HALL JOINS UP WITH",10
+# "A NARROW NORTH/SOUTH PASSAGE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room22
+
+include RoomEnter.frag
+
+    currentRoom = 22
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_WEST) {
+      GOTO Room20:Enter
+    }
+    if(word1==WD_NORTH) {
+      GOTO Room23:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room24:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room21:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT A CROSSOVER OF A HIGH N/S",10
+# "PASSAGE AND A LOW E/W ONE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room23
+
+include RoomEnter.frag
+
+    currentRoom = 23
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_SOUTH) {
+      GOTO Room22:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room22:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room24
+
+include RoomEnter.frag
+
+    currentRoom = 24
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room16:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room16:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room22:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room22:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE WEST THRONE CHAMBER. A",10
+# "PASSAGE CONTINUES WEST AND UP FROM HERE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room25
+
+include RoomEnter.frag
+
+    currentRoom = 25
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_OUTSIDE) {
+      GOTO Room16:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room16:Enter
+    }
+    if(word1==WD_NORTH) {
+      GOTO Room26:Enter
+    }
+    if(word1==32) {
+      GOTO Room26:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room54:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A LOW N/S PASSAGE AT A HOLE IN",10
+# "THE FLOOR. THE HOLE GOES DOWN TO AN E/W",10
+# "PASSAGE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room26
+
+include RoomEnter.frag
+
+    currentRoom = 26
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_PANEL) {
+      GOTO Room2:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room25:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room27:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A LARGE ROOM, WITH A PASSAGE",10
+# "TO THE SOUTH, AND A WALL OF BROKEN ROCK",10
+# "TO THE EAST. THERE IS A PANEL ON THE",10
+# "NORTH WALL.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room27
+
+include RoomEnter.frag
+
+    currentRoom = 27
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_DOWN) {
+      GOTO Room26:Enter
+    }
+    if(word1==32) {
+      GOTO Room26:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room13:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE CHAMBER OF ANUBIS.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room28
+
+include RoomEnter.frag
+
+    currentRoom = 28
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room28:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room32:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room30:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room29:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room19:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room29
+
+include RoomEnter.frag
+
+    currentRoom = 29
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room28:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room51:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room29:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room29:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room30
+
+include RoomEnter.frag
+
+    currentRoom = 30
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room32:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room42:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room43:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room28:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room31:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room31:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room31
+
+include RoomEnter.frag
+
+    currentRoom = 31
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room30:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room30:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+    CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room32
+
+include RoomEnter.frag
+
+    currentRoom = 32
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room30:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room33:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room28:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room33
+
+include RoomEnter.frag
+
+    currentRoom = 33
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room44:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room32:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room34:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room45:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room34
+
+include RoomEnter.frag
+
+    currentRoom = 34
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room33:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room35:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room37:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room38:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room35
+
+include RoomEnter.frag
+
+    currentRoom = 35
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room36:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room38:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room35:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room34:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room39:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room47:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room36
+
+include RoomEnter.frag
+
+    currentRoom = 36
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room36:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room52:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room35:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room48:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room37
+
+include RoomEnter.frag
+
+    currentRoom = 37
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room34:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room38:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room38
+
+include RoomEnter.frag
+
+    currentRoom = 38
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room35:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room39:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room37:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room34:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room39
+
+include RoomEnter.frag
+
+    currentRoom = 39
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room35:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room46:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room38:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room40
+
+include RoomEnter.frag
+
+    currentRoom = 40
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room52:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room41:Enter
+    }
+    if(word1==WD_NORTHWEST) {
+      GOTO Room53:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room41
+
+include RoomEnter.frag
+
+    currentRoom = 41
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room40:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room52:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room50:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A MAZE OF TWISTY PASSAGES, ALL",10
+# "ALIKE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room42
+
+include RoomEnter.frag
+
+    currentRoom = 42
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_WEST) {
+      GOTO Room30:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room43
+
+include RoomEnter.frag
+
+    currentRoom = 43
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room30:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room44
+
+include RoomEnter.frag
+
+    currentRoom = 44
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_SOUTH) {
+      GOTO Room33:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room45
+
+include RoomEnter.frag
+
+    currentRoom = 45
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room33:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room46
+
+include RoomEnter.frag
+
+    currentRoom = 46
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_WEST) {
+      GOTO Room39:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room47
+
+include RoomEnter.frag
+
+    currentRoom = 47
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room35:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room48
+
+include RoomEnter.frag
+
+    currentRoom = 48
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room36:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room49
+
+include RoomEnter.frag
+
+    currentRoom = 49
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room52:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room50
+
+include RoomEnter.frag
+
+    currentRoom = 50
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room41:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room51
+
+include RoomEnter.frag
+
+    currentRoom = 51
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_WEST) {
+      GOTO Room29:Enter
+    }
+    if(word1==WD_DROP) {
+      ; SPECIAL-LOGIC
+	  ; If second word is coins
+	  ;  If coins are in pack
+	  ;    coins to 0
+	  ;    batteries to here
+	  ;    print message
+	  if(word2==WD_COINS) {
+	    if(loc_coins == IN_PACK) {
+		  loc_coins = 0
+		  loc_batteries = currentRoom
+		  numberOfTreasuresInPack = numberOfTreasuresInPack - 1
+		  numberOfObjectsInPack = numberOfObjectsInPack - 1
+		  PRINT msgNewBatteries
+		  GOTO InputAgain		  
+		}
+	  }
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+;  01234567890123456789012345678901234567890
+msgNewBatteries:
+# "THERE ARE NOW SOME FRESH BATTERIES HERE.",10,0
+
+desc:
+# "DEAD END. THERE IS A MASSIVE VENDING",10
+# "MACHINE HERE. THE INSTRUCTIONS ON IT",10
+# "READ- 'DROP COINS HERE TO RECIEVE",10
+# "FRESH BATTERIES'.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room52
+
+include RoomEnter.frag
+
+    currentRoom = 52
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room41:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room40:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room49:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room36:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room11:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE ON THE BRINK OF A LARGE PIT. YOU",10
+# "COULD CLIMB DOWN, BUT YOU WOULD NOT BE",10
+# "ABLE TO CLIMB BACK UP. THE MAZE CONTINUES",10
+# "ON THIS LEVEL.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room53
+
+include RoomEnter.frag
+
+    currentRoom = 53
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_SOUTHEAST) {
+      GOTO Room40:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "DEAD END.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room54
+
+include RoomEnter.frag
+
+    currentRoom = 54
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room55:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room57:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room25:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A DIRTY BROKEN PASSAGE. TO THE",10
+# "EAST IS A CRAWL. TO THE WEST IS A LARGE",10
+# "PASSAGE. ABOVE YOU IS A HOLE TO ANOTHER",10
+# "PASSAGE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room55
+
+include RoomEnter.frag
+
+    currentRoom = 55
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_WEST) {
+      GOTO Room54:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room56:Enter
+    }
+    if(word1==WD_CLIMB) {
+      GOTO Room56:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE ON THE BRINK OF A SMALL CLEAN",10
+# "CLIMBABLE PIT. A CRAWL LEADS WEST.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room56
+
+include RoomEnter.frag
+
+    currentRoom = 56
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room55:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room55:Enter
+    }
+    if(word1==WD_CLIMB) {
+      GOTO Room55:Enter
+    }
+    if(word1==WD_DOWN) {
+	  ; SPECIAL-LOGIC
+	  ; print you don't fit
+      PRINT msgSlit
+	  GOTO InputAgain
+    }
+    if(word1==WD_FILL) {
+      ; SPECIAL-LOGIC
+	  ; If have bottle
+	  ;   if not-full, fill and print message
+	  ;   else print message
+	  if(loc_bottle == IN_PACK) {
+	    if(waterInBottle == 1) {
+		  PRINT msgBottle1
+		} else {
+		  waterInBottle = 1
+		  PRINT msgBottle2		  
+		}
+		GOTO InputAgain
+	  }
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+;  01234567890123456789012345678901234567890
+msgSlit:
+# "YOU DON'T FIT THROUGH TWO-INCH SLIT!",10,0
+msgBottle1:
+# "YOUR BOTTLE IS ALREADY FULL.",10,0
+msgBottle2:
+# "OK",10,0
+
+desc:
+# "YOU ARE IN THE BOTTOM OF A SMALL PIT WITH",10
+# "A LITTLE STREAM, WHICH ENTERS AND EXITS",10
+# "THROUGH TINY SLITS.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room57
+
+include RoomEnter.frag
+
+    currentRoom = 57
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room54:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room58:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A THE ROOM OF BES, WHOSE",10
+# "PICTURE IS ON THE WALL. THERE IS A BIG",10
+# "HOLE IN THE FLOOR. THERE IS A PASSAGE",10
+# "LEADING EAST.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room58
+
+include RoomEnter.frag
+
+    currentRoom = 58
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room61:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room59:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room65:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room57:Enter
+    }
+    if(word1==WD_CLIMB) {
+      GOTO Room57:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT A COMPLEX JUNCTION. A LOW",10
+# "HANDS AND KNEES PASSAGE FROM THE NORTH",10
+# "JOINS A HIGHER CRAWL FROM THE EAST TO",10
+# "MAKE A WALKING PASSAGE GOING WEST. THERE",10
+# "IS ALSO A LARGE ROOM ABOVE. THE AIR IS",10
+# "DAMP HERE.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room59
+
+include RoomEnter.frag
+
+    currentRoom = 59
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room60:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room65:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room58:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE UNDERWORLD ANTEROOM OF",10
+# "SEKER. PASSAGES GO EAST, WEST, AND UP.",10
+# "HUMAN BONES ARE STREWN ABOUT ON THE",10
+# "FLOOR. HIEROGLYPHICS ON THE WALL ROUGHLY",10
+# "TRANSLATE TO 'THOSE WHO PROCEED EAST MAY",10
+# "NEVER RETURN.'",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room60
+
+include RoomEnter.frag
+
+    currentRoom = 60
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      ; SPECIAL-LOGIC
+	  ; In all of these ... If random-byte>hexF0 then Room 59
+	  temp = temp RND 255
+	  if(temp > 240) {
+	    GOTO Room59:Enter	    
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_EAST) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 240) {
+	    GOTO Room59:Enter	    
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_SOUTH) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 240) {
+	    GOTO Room59:Enter	    
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_NORTHEAST) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 240) {
+	    GOTO Room59:Enter	    
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_SOUTHEAST) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 240) {
+	    GOTO Room59:Enter	    
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_SOUTHWEST) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 240) {
+	    GOTO Room59:Enter	    
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_NORTHWEST) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 240) {
+	    GOTO Room59:Enter	    
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_UP) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 240) {
+	    GOTO Room59:Enter	    
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_WEST) {
+	; SPECIAL-LOGIC
+      PRINT msgLittleHoles
+	  GOTO Room60:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+msgLittleHoles:
+# "YOU HAVE CRAWLED AROUND IN SOME LITTLE",10
+# "HOLES AND FOUND YOUR WAY BLOCKED BY A",10
+# "FALLEN SLAB. YOU ARE NOW BACK IN THE",10
+# "MAIN PASSAGE.",10,0
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT THE LAND OF DEAD. PASSAGES",10
+# "LEAD OFF IN >ALL< DIRECTIONS.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room61
+
+include RoomEnter.frag
+
+    currentRoom = 61
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_SOUTH) {
+      ; SPECIAL-LOGIC
+	  ; If carying sarc print can't fit
+	  ; else Room 58
+	  if(loc_sarcophagus == IN_PACK) {
+	    PRINT msgCantFit
+		GOTO InputAgain
+	  }
+	  GOTO Room58:Enter
+    }
+    if(word1==WD_UP) {
+      GOTO Room62:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room63:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+msgCantFit:
+# "YOU CAN'T FIT THIS BIG SARCOPHAGUS",10
+#  "THROUGH THAT LITTLE PASSAGE!",10,0
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU'RE IN A LARGE ROOM WITH ANCIENT",10
+# "DRAWINGS ON ALL WALLS. THE PICTURES",10
+# "DEPICT ATUM, A PHARAOH WEARING THE DOUBLE",10
+# "CROWN. A SHALLOW PASSAGE PROCEEDS",10
+# "DOWNWARD, AND A SOMEWHAT STEEPER ONE",10
+# "LEADS UP. A LOW HANDS AND KNEES PASSAGE",10
+# "ENTERS FROM THE SOUTH.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room62
+
+include RoomEnter.frag
+
+    currentRoom = 62
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_DOWN) {
+      GOTO Room61:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room61:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A CHAMBER WHOSE WALL CONTAINS",10
+# "A PICTURE OF A MAN WEARING THE LUNAR DISK",10
+# "ON HIS HEAD.  HE IS THE GOD KHONS, THE",10
+# "MOON GOD.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room63
+
+include RoomEnter.frag
+
+    currentRoom = 63
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room61:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room64:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A LONG SLOPING CORRIDOR WITH",10
+# "RAGGED WALLS.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room64
+
+include RoomEnter.frag
+
+    currentRoom = 64
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room63:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room63:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A CUL-DE-SAC ABOUT EIGHT FEET",10
+# "ACROSS.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room65
+
+include RoomEnter.frag
+
+    currentRoom = 65
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room58:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room78:Enter
+    }
+    if(word1==WD_UP) {	
+      ; SPECIAL-LOGIC
+	  ; All these are the same. If RND > 204 go
+	  temp = temp RND 255
+	  if(temp > 204) {
+	    GOTO Room72:Enter
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_NORTH) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 204) {
+	    GOTO Room73:Enter
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_SOUTH) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 204) {
+	    GOTO Room66:Enter
+	  }
+	  GOTO InputAgain
+    }
+    if(word1==WD_DOWN) {
+      ; SPECIAL-LOGIC
+	  temp = temp RND 255
+	  if(temp > 204) {
+	    GOTO Room59:Enter
+	  }
+	  GOTO InputAgain
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE CHAMBER OF HORUS, A LONG",10
+# "EAST/WEST PASSAGE WITH HOLES EVERYWHERE.",10
+# "TO EXPLORE AT RANDOM, SELECT NORTH,",10
+# "SOUTH, UP, OR DOWN.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room66
+
+include RoomEnter.frag
+
+    currentRoom = 66
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room65:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room80:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A LARGE LOW CIRCULAR CHAMBER",10
+# "WHOSE FLOOR IS AN IMMENSE SLAB FALLEN",10
+# "FROM THE CEILING. EAST AND WEST THERE",10
+# "ONCE WERE LARGE PASSAGES, BUT THEY ARE",10
+# "NOW FILLED WITH SAND. LOW SMALL PASSAGES",10
+# "GO NORTH AND SOUTH.",10,0
+
+; ---------------------------------------------
+
+; CLUSTER Room67 NOT USED
+
+; ---------------------------------------------
+
+CLUSTER Room68
+
+include RoomEnter.frag
+
+    currentRoom = 68
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_SOUTH) {
+      GOTO Room71:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room71:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE CHAMBER OF NEKHEBET, A",10
+# "WOMAN WITH THE HEAD OF A VULTURE, WEARING",10
+# "THE CROWN OF EGYPT. A PASSAGE EXITS TO",10
+# "THE SOUTH.",10,0
+
+; ---------------------------------------------
+
+; CLUSTER Room69 NOT USED
+
+; ---------------------------------------------
+
+CLUSTER Room70
+
+include RoomEnter.frag
+
+    currentRoom = 70
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_SOUTH) {
+      GOTO Room71:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room71:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "THE PASSAGE HERE IS BLOCKED BY A FALLEN",10
+# "BLOCK.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room71
+
+include RoomEnter.frag
+
+    currentRoom = 71
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_NORTH) {
+      GOTO Room68:Enter
+    }
+    if(word1==WD_EAST) {
+      GOTO Room70:Enter
+    }
+    if(word1==WD_SOUTH) {
+      GOTO Room77:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE CHAMBER OF OSIRIS. THE",10
+# "CEILING IS TOO HIGH UP FOR YOUR LAMP TO",10
+# "SHOW IT. PASSAGES LEAD EAST, NORTH, AND",10
+# "SOUTH.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room72
+
+include RoomEnter.frag
+
+    currentRoom = 72
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_WEST) {
+      GOTO Room65:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room65:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE PRIEST'S BEDROOM. THE",10
+# "WALLS ARE COVERED WITH CURTAINS, THE",10
+# "FLOOR WITH A THICK PILE CARPET. MOSS",10
+# "COVERS THE CEILING.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room73
+
+include RoomEnter.frag
+
+    currentRoom = 73
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_WEST) {
+      ; SPECIAL-LOGIC
+	  ; Pack must be empty except for vase
+	  ; GOTO room 76
+	  temp = numberOfObjectsInPack
+	  if(loc_vase == IN_PACK) {
+	    temp = temp - 1
+	  }
+	  if(temp>0) {
+	    PRINT msgWontFit
+		GOTO InputAgain
+	  }
+	  GOTO Room76:Enter
+    }
+    if(word1==WD_SOUTHEAST) {
+      GOTO Room65:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+msgWontFit:
+# "SOMETHING YOU'RE CARRYING WON'T FIT",10
+# "THROUGH THE TUNNEL WITH YOU. YOU'D BEST",10
+# "TAKE INVENTORY AND DROP SOMETHING.",10,0
+
+desc:
+;  01234567890123456789012345678901234567890
+# "THIS IS THE CHAMBER OF THE HIGH PRIEST.",10
+# "ANCIENT DRAWINGS COVER THE WALLS. AN",10
+# "EXTREMELY TIGHT TUNNEL LEADS WEST. IT",10
+# "LOOKS LIKE A TIGHT SQUEEZE. ANOTHER",10
+# "PASSAGE LEADS SE.",10,0
+
+; ---------------------------------------------
+
+; CLUSTER Room74 NOT USED
+
+; ---------------------------------------------
+
+; CLUSTER Room75 NOT USED
+
+; ---------------------------------------------
+
+CLUSTER Room76
+
+include RoomEnter.frag
+
+    currentRoom = 76
+    ambientLight = 1
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      ; SPECIAL-LOGIC
+	  temp = numberOfObjectsInPack
+	  if(loc_vase == IN_PACK) {
+	    temp = temp - 1
+	  }
+	  if(temp>0) {
+	    PRINT msgWontFit
+		GOTO InputAgain
+	  }
+	  GOTO Room73:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      ; SPECIAL-LOGIC
+	  temp = numberOfObjectsInPack
+	  if(loc_vase == IN_PACK) {
+	    temp = temp - 1
+	  }
+	  if(temp>0) {
+	    PRINT msgWontFit
+		GOTO InputAgain
+	  }
+	  GOTO Room73:Enter
+    }
+
+	; TOPHER ... special logic to allow BACK to work in this
+	; important spot! Is this by design or an oversight. If
+	; it wasn't intended then the only way to get the emerald
+	; out is to let the mummy take it ... which explains why
+	; the vase can go in.
+	if(word1==WD_BACK) {
+	  GOTO Room73:Enter
+	}
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+msgWontFit:
+# "SOMETHING YOU'RE CARRYING WON'T FIT",10
+# "THROUGH THE TUNNEL WITH YOU. YOU'D BEST",10
+# "TAKE INVENTORY AND DROP SOMETHING.",10,0
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN THE HIGH PRIEST'S TREASURE",10
+# "ROOM LIT BY AN EERIE GREEN LIGHT. A",10
+# "NARROW TUNNEL EXITS TO THE EAST.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room77
+
+include RoomEnter.frag
+
+    currentRoom = 77
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room81:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room81:Enter
+    }
+    if(word1==WD_CLIMB) {
+      GOTO Room81:Enter
+    }
+    if(word1==WD_JUMP) {
+	  ; SPECIAL-LOGIC
+      PRINT msgBrokenNeck
+	  GOTO Common2:Quit
+    }
+    if(word1==WD_WEST) {
+      GOTO Room71:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+msgBrokenNeck:
+# "YOU ARE AT THE BOTTOM OF THE PIT WITH",10
+# "A BROKEN NECK."10,0
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE IN A LONG, NARROW CORRIDOR",10
+# "STRETCHING OUT OF SIGHT TO THE WEST. AT",10
+# "THE EASTERN END IS A HOLE THROUGH WHICH",10
+# "YOU CAN SEE A PROFUSION OF LEAVES.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room78
+
+include RoomEnter.frag
+
+    currentRoom = 78
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room65:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room80:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room79:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT THE EAST END OF THE TWOPIT",10
+# "ROOM. THE FLOOR HERE IS LITTERED WITH",10
+# "THIN ROCK SLABS, WHICH MAKE IT EASY TO",10
+# "DESCEND THE PITS. THERE IS A PATH HERE",10
+# "BYPASSING THE PITS TO CONNECT PASSAGES",10
+# "EAST AND WEST. THERE ARE HOLES ALL OVER,",10
+# "BUT THE ONLY BIG ONE IS ON THE WALL",10
+# "DIRECTLY OVER THE WEST PIT WHERE YOU",10
+# "CAN'T GET TO IT.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room79
+
+include RoomEnter.frag
+
+    currentRoom = 79
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room78:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room78:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT THE BOTTOM OF THE EASTERN PIT",10
+# "IN THE TWOPIT ROOM.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room80
+
+include RoomEnter.frag
+
+    currentRoom = 80
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_EAST) {
+      GOTO Room78:Enter
+    }
+    if(word1==WD_WEST) {
+      GOTO Room66:Enter
+    }
+    if(word1==WD_DOWN) {
+      GOTO Room81:Enter
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+;  01234567890123456789012345678901234567890
+# "YOU ARE AT THE WEST END OF THE TWOPIT",10
+# "ROOM. THERE IS A LARGE HOLE IN THE WALL",10
+# "ABOVE THE PIT AT THIS END OF THE ROOM.",10,0
+
+; ---------------------------------------------
+
+CLUSTER Room81
+
+include RoomEnter.frag
+
+    currentRoom = 81
+    ambientLight = 0
+
+include RoomMiddle.frag
+
+    ; Process the specifics
+
+    if(word1==WD_UP) {
+      GOTO Room80:Enter
+    }
+    if(word1==WD_OUTSIDE) {
+      GOTO Room80:Enter
+    }
+    if(word1==WD_CLIMB) {
+      ; SPECIAL-LOGIC
+	  if(plantLevel == 2) {
+	    PRINT msgPlant8
+	    GOTO Room77:Enter
+	  }
+	  if(plantLevel == 1) {
+	    PRINT msgPlant7
+	    GOTO Room80:Enter
+	  }
+	  PRINT msgPlant9
+	  GOTO InputAgain
+    }
+    if(word1==WD_POUR) {
+      ; SPECIAL-LOGIC
+	  if(waterInBottle==1) {
+	    waterInBottle = 0
+		if(plantLevel==0) {
+		  plantLevel = 1
+		  PRINT msgPlant4
+		  PRINT msgPlant2
+		  GOTO InputAgain
+		}
+		if(plantLevel==1) {
+		  plantLevel = 2
+		  PRINT msgPlant5
+		  PRINT msgPlant3
+		  GOTO InputAgain
+		}
+		plantLevel = 0
+		PRINT msgPlant6
+		PRINT msgPlant1
+		GOTO InputAgain
+		
+	  }
+    }
+
+include RoomEnd.frag
+
+PrintDesc:
+    PRINT desc
+	if(plantLevel==0) {
+	  PRINT msgPlant1
+	}
+	if(plantLevel==1) {
+	  PRINT msgPlant2
+	}
+	if(plantLevel==2) {
+	  PRINT msgPlant3
+	}
+	CALL Objects:PrintDescriptions
+    RETURN
+
+desc:
+# "YOU ARE AT THE BOTTOM OF THE WEST PIT IN",10
+# "THE TWOPIT ROOM. THERE IS A LARGE HOLE IN",10
+# "THE WALL ABOUT TWENTY FIVE FEET ABOVE",10
+# "YOU.",10,0
+
+;  01234567890123456789012345678901234567890
+
+msgPlant7:
+# "YOU CLAMBER UP THE PLANT AND SCURRY",10
+# "THROUGH THE HOLE AT THE TOP.",10,0
+msgPlant8:
+# "YOU'VE CLIMBED UP THE PLANT AND OUT OF",10
+# "THE PIT.",10,0
+msgPlant9:
+# "THERE IS NOTHING HERE TO CLIMB. USE UP",10
+# "OR OUT TO LEAVE THE PIT.",10,0
+
+msgPlant1:
+# "THERE IS A TINY PLANT IN THE PIT,",10
+# "MURMURING 'WATER, WATER, ...'",10,0
+msgPlant2:
+# "THERE IS A TWELVE FOOT BEAN STALK",10
+# "STRETCHING UP OUT OF THE PIT, BELLOWING",10
+# "'WATER... WATER...'",10,0
+msgPlant3:
+# "THERE IS A GIGANTIC BEAN STALK STRETCHING",10
+# "ALL THE WAY UP TO THE HOLE.",10,0
+
+msgPlant4:
+# "THE PLANT SPURTS INTO FURIOUS GROWTH FOR",10
+# "A FEW SECONDS.",10,0
+msgPlant5:
+# "THE PLANT GROWS EXPLOSIVELY, ALMOST",10
+# "FILLING THE BOTTOM OF THE PIT.",10,0
+msgPlant6:
+# "YOU'VE OVER-WATERED THE PLANT! IT'S",10
+# "SHRIVELING UP!",10,0
+
+; ---------------------------------------------
+

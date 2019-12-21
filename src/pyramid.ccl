@@ -1,0 +1,138 @@
+
+define IN_PACK 255
+define TREASURE_ROOM 2
+define CHEST_ROOM 53
+
+variable loc_lamp          
+variable loc_box           
+variable loc_scepter       
+variable loc_bird          
+variable loc_pillow        
+variable loc_sarcophagus   
+variable loc_magazines     
+variable loc_food          
+variable loc_bottle        
+variable loc_batteries     
+variable loc_pottery    
+;  
+variable loc_gold         
+variable loc_diamonds     
+variable loc_silver       
+variable loc_jewelry      
+variable loc_coins        
+variable loc_chest        
+variable loc_eggs         
+variable loc_key          
+variable loc_vase         
+variable loc_emerald      
+variable loc_pearl        
+
+variable ambientLight
+variable currentRoom
+variable lastRoom
+variable lastAmbientLight
+variable respAction
+
+variable lampOn
+variable lampTime
+variable batteriesDead
+variable vaseOnPillow
+variable birdInBox
+variable waterInBottle
+variable bridgeExtended
+variable serpentGone
+variable plantLevel
+
+variable score
+variable numberOfTurns
+
+variable numberOfTreasuresInPack
+variable numberOfObjectsInPack
+
+variable temp2
+variable temp
+
+variable NumberOfWords
+variable word1
+variable word2
+variable word3
+variable word4
+variable word5
+
+variable whatNumber
+
+CLUSTER Initialize
+
+  PRINT init1
+  
+  ; Initialize the known words
+  CALL InitializeInputTokens:Init
+
+  PRINT init2
+  
+  ; Stick the important clusters permanently in cache
+  CALL Objects:MakeStick
+  CALL Common1:MakeStick
+  CALL Common2:MakeStick
+
+  PRINT init3
+  
+  loc_lamp        =  2
+  loc_box         =  8      
+  loc_scepter     =  9   
+  loc_bird        = 11      
+  loc_pillow      = 72    
+  loc_sarcophagus = 61
+  loc_magazines   = 59
+  loc_food        =  2
+  loc_bottle      =  2 
+   
+  loc_gold        = 14
+  loc_diamonds    = 17
+  loc_silver      = 25
+  loc_jewelry     = 28
+  loc_coins       = 24  
+  loc_eggs        = 71
+  loc_key         = 68
+  loc_vase        = 73
+  loc_emerald     = 76
+
+  waterInBottle   = 1  
+  
+  PRINT msgWelcome
+  
+  GOTO Room1:Enter
+
+init1:
+# 2,"Initializing tokens ...",10,0
+
+init2:
+# "Loading common clusters ...",10,0
+
+init3:
+# "Initializing game variables ...",10,10,0
+
+msgWelcome:
+# 1,"WELCOME TO PYRAMID!!",10,10,0
+
+
+
+; All the room clusters
+include Rooms.ccl
+
+; The input tokens
+include inputs.ccl
+
+; Descriptions of objects and SCORE
+include objects.ccl
+
+; Common Command Handling (part 1)
+include Common1.ccl
+
+; Common Command Handling (part 2)
+include Common2.ccl
+
+; Mummy
+include Mummy.ccl
+
+

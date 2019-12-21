@@ -1,0 +1,54 @@
+CLUSTER Mummy
+
+StealTreasure:  
+  PRINT msgMummy
+  if(loc_gold==IN_PACK) {
+    loc_gold = CHEST_ROOM
+    numberOfObjectsInPack = numberOfObjectsInPack - 1    
+  }
+  if(loc_diamonds==IN_PACK) {
+    loc_diamonds = CHEST_ROOM
+    numberOfObjectsInPack = numberOfObjectsInPack - 1  
+  }
+  if(loc_silver==IN_PACK) {
+    loc_silver = CHEST_ROOM
+    numberOfObjectsInPack = numberOfObjectsInPack - 1
+  }
+  if(loc_jewelry==IN_PACK) {
+    loc_jewelry = CHEST_ROOM
+    numberOfObjectsInPack = numberOfObjectsInPack - 1
+  }
+  if(loc_coins==IN_PACK) {
+    loc_coins = CHEST_ROOM
+    numberOfObjectsInPack = numberOfObjectsInPack - 1
+  }  
+  if(loc_eggs==IN_PACK) {
+    loc_eggs = CHEST_ROOM
+    numberOfObjectsInPack = numberOfObjectsInPack - 1
+  }
+  if(loc_key==IN_PACK) {
+    loc_key = CHEST_ROOM
+    numberOfObjectsInPack = numberOfObjectsInPack - 1
+  }
+  if(loc_vase==IN_PACK) {
+    loc_vase = CHEST_ROOM     
+    numberOfObjectsInPack = numberOfObjectsInPack - 1
+  }
+  if(loc_emerald==IN_PACK) {
+    loc_emerald = CHEST_ROOM
+    numberOfObjectsInPack = numberOfObjectsInPack - 1
+  }
+  if(loc_pearl==IN_PACK) {
+    loc_pearl = CHEST_ROOM
+    numberOfObjectsInPack = numberOfObjectsInPack - 1
+  }
+  loc_chest = CHEST_ROOM
+  numberOfTreasuresInPack = 0
+  RETURN
+
+msgMummy:
+# 3,"SUDDENLY, A MUMMY CREEPS UP BEHIND YOU!!",10 
+# "'I'M THE KEEPER OF THE TOMB', HE WAILS,",10
+# "'I TAKE THESE TREASURES AND PUT THEM IN THE",10
+# "CHEST DEEP IN THE MAZE!' HE GRABS YOUR",10
+# "TREASURE AND VANISHES INTO THE GLOOM.",1,10,0
